@@ -10,8 +10,10 @@ function getCommonAncestor(node) {
     }
 
     var nodes = slice.call(arguments, 1)
+    var list = parents(node)
+    list.unshift(node)
 
-    return parents(node).filter(function (parent) {
+    return list.filter(function (parent) {
         return nodes.every(function (node) {
             return contains(parent, node)
         })

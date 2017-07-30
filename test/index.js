@@ -17,6 +17,20 @@ test("is correct", function (assert) {
     assert.end()
 })
 
+test("is correct with inner child", function (assert) {
+    var one = elem()
+    var two = elem()
+    var three = elem()
+
+    one.appendChild(two)
+    two.appendChild(three)
+
+    var ancestor = commonAncestors(two, three)
+
+    assert.equal(ancestor, two)
+    assert.end()
+})
+
 test("doesn't return false positives", function (assert) {
     var one = elem()
     var two = elem()
